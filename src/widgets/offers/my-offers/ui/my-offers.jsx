@@ -6,7 +6,7 @@ import {
   IconButton,
   Headline,
 } from "@telegram-apps/telegram-ui";
-import styles from "./offers-list.module.css";
+import styles from "./my-offers.module.css";
 import { OfferState } from "@/entities/offer/state";
 import { dayjs } from "@/utils/dates";
 
@@ -18,8 +18,9 @@ const offers = [
       "Написать админку для сервиса, на react. Использовать стейт-менеджер mobx. Необходимо для защиты использовать bff. Методология FSD. Ссылка на фигму - ",
     category: "Веб-разработка",
     subcategory: "frontend",
+    state: "complete",
     price: 12.78,
-    currency: "usdt",
+    currency: "ton",
     views: 317,
     responses: 90,
     created_date: "2024-10-13T18:59:40.503220Z",
@@ -30,6 +31,7 @@ const offers = [
     description: "Сделать дизайн маркетплейса игровых ценностей в Figma",
     category: "Веб-разработка",
     subcategory: "design",
+    state: "inWork",
     price: 95,
     currency: "ton",
     views: 871,
@@ -42,6 +44,7 @@ const offers = [
     description: "Сделать дизайн маркетплейса игровых ценностей в Figma",
     category: "Веб-разработка",
     subcategory: "design",
+    state: "created",
     price: 95,
     currency: "ton",
     views: 871,
@@ -54,15 +57,16 @@ const offers = [
     description: "Сделать дизайн маркетплейса игровых ценностей в Figma",
     category: "Веб-разработка",
     subcategory: "design",
+    state: "cancelled",
     price: 95,
-    currency: "ton",
+    currency: "usdt",
     views: 871,
     responses: 123,
     created_date: "2024-10-13T18:59:40.503220Z",
   },
 ];
 
-export const OffersListWidget = ({ label }) => {
+export const MyOffersWidget = ({ label }) => {
   return (
     <Section
       header={
@@ -97,6 +101,7 @@ export const OffersListWidget = ({ label }) => {
             }
             after={
               <div className={styles.info}>
+                <OfferState state={offer.state} />
                 <div className={styles.price}>
                   <Caption level={1} weight={2}>
                     {offer.price}

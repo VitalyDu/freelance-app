@@ -1,41 +1,27 @@
 import { Icon } from "@/components/ui";
-import { useInitData } from "@telegram-apps/sdk-react";
 import {
-  Avatar,
   Button,
   Cell,
   FileInput,
   Input,
   List,
-  Placeholder,
   Section,
-  Selectable,
-  Switch,
-  Textarea,
   Select,
+  Selectable,
+  Textarea,
 } from "@telegram-apps/telegram-ui";
-import { useMemo } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import styles from "./create-offer.module.css";
 
 export const CreateOfferPage = () => {
   const { i18n, t } = useTranslation();
-  const initData = useInitData();
-
-  const languages = useMemo(() => {
-    const array = [
-      { label: "English", value: "en", isActive: i18n.language != "ru" },
-      { label: "Русский", value: "ru", isActive: i18n.language == "ru" },
-    ];
-
-    return array;
-  }, [i18n.language]);
+  const [selectedCurrency, setSelectedCurrency] = useState("usdt");
 
   return (
     <List>
       <Section
-        header={"Создать объявление"}
+        header={"Детальная информация"}
         style={{
           background: "var(--tgui--secondary_bg_color)",
         }}
@@ -61,11 +47,49 @@ export const CreateOfferPage = () => {
         <Cell>
           <FileInput label="Прикрепить файлы" className={styles.clip} />
         </Cell>
+      </Section>
+      <Section header="Валюта и цена">
+        <Cell
+          Component="label"
+          before={
+            <Selectable
+              checked={selectedCurrency == "usdt"}
+              name="currency"
+              value={"usdt"}
+              onChange={(e) => {
+                setSelectedCurrency(e.target.value);
+              }}
+            />
+          }
+          after={<Icon name="usdt" size={24} />}
+          multiline
+        >
+          USDT
+        </Cell>
+        <Cell
+          Component="label"
+          before={
+            <Selectable
+              checked={selectedCurrency == "usdt"}
+              name="currency"
+              value={"usdt"}
+              onChange={(e) => {
+                setSelectedCurrency(e.target.value);
+              }}
+            />
+          }
+          after={<Icon name="ton" size={24} />}
+          multiline
+        >
+          TON
+        </Cell>
         <Input
           header={"Цена"}
           placeholder={"Введите цену объявления"}
-          after={<Icon name="ton" size={24} />}
+          after={<Icon name={selectedCurrency} size={24} />}
         />
+      </Section>
+      <Section>
         <List
           style={{
             padding: "20px 22px 16px",

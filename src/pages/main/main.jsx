@@ -89,24 +89,36 @@ export const MainPage = () => {
         }}
       >
         <Cell
+          Component={Link}
+          to="/my-orders"
           before={<Icon name="backpack" size={20} />}
           after={
             <Badge type="number" mode="primary">
-              24
+              59
             </Badge>
           }
         >
           Работы
         </Cell>
         <Cell
+          Component={Link}
+          to="/my-reviews"
           before={<Icon name="star" size={20} />}
           after={
             <Badge type="number" mode="primary">
-              24
+              10
             </Badge>
           }
         >
           Отзывы
+        </Cell>
+        <Cell
+          Component={Link}
+          to={`/notifications`}
+          before={<Icon name="bell" size={20} />}
+          titleBadge={<Badge type="dot" />}
+        >
+          Уведомления
         </Cell>
         <Cell
           Component={Link}

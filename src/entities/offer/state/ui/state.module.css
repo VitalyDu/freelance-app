@@ -1,0 +1,41 @@
+.state {
+  padding: 2px 6px;
+  border-radius: 4px;
+
+  &.inWork {
+    /* background: var(--tgui--secondary_fill); */
+    color: var(--tgui--link_color);
+    background: color-mix(
+      in oklab,
+      var(--tgui--link_color),
+      var(--tgui--section_bg_color) 90%
+    );
+  }
+
+  &.complete {
+    color: var(--tgui--green);
+    background: color-mix(
+      in oklab,
+      var(--tgui--secondary_fill),
+      var(--tgui--section_bg_color) 30%
+    );
+  }
+
+  &.created {
+    color: var(--tgui--text_color);
+    background: color-mix(
+      in oklab,
+      var(--tgui--text_color),
+      var(--tgui--section_bg_color) 90%
+    );
+  }
+
+  &.cancelled {
+    color: var(--tgui--destructive_text_color);
+    background: color-mix(
+      in oklab,
+      var(--tgui--destructive_text_color),
+      var(--tgui--section_bg_color) 90%
+    );
+  }
+}

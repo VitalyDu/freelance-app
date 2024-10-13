@@ -1,4 +1,4 @@
-import { OffersListWidget } from "@/widgets/offers/list";
+import { MyOffersWidget } from "@/widgets/offers/my-offers";
 import { useInitData, useLaunchParams } from "@telegram-apps/sdk-react";
 import { List } from "@telegram-apps/telegram-ui";
 import { useState } from "react";
@@ -12,7 +12,7 @@ export const MyOffersPage = () => {
 
   return (
     <List>
-      <OffersListWidget label="Мои объявления" />
+      <MyOffersWidget label="Мои объявления" />
     </List>
   );
 };

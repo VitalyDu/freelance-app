@@ -77,17 +77,6 @@ export const App = () => {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>
-      <Tabbar>
-        <Tabbar.Item text={"Объявления"} selected>
-          <Icon name="search" />
-        </Tabbar.Item>
-        <Tabbar.Item text={"Работы"}>
-          <Icon name="settings" />
-        </Tabbar.Item>
-        <Tabbar.Item text={"Профиль"}>
-          <Icon name="user" />
-        </Tabbar.Item>
-      </Tabbar>
     </AppRoot>
   );
 };
