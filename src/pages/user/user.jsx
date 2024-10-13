@@ -1,4 +1,5 @@
 import { Icon } from "@/components/ui";
+import { dayjs } from "@/utils/dates";
 import { OffersListWidget } from "@/widgets/offers/list";
 import { OrdersListWidget } from "@/widgets/orders/list";
 import { ReviewsListWidget } from "@/widgets/reviews/list";
@@ -7,19 +8,16 @@ import {
   Avatar,
   Button,
   Caption,
+  Cell,
   IconButton,
   List,
   Placeholder,
-  TabsList,
-  Headline,
   Section,
-  Cell,
+  TabsList,
 } from "@telegram-apps/telegram-ui";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./user.module.css";
-import { cx } from "class-variance-authority";
-import { dayjs } from "@/utils/dates";
 
 export const UserPage = () => {
   const initDataRaw = useLaunchParams().initDataRaw;
@@ -112,26 +110,31 @@ export const UserPage = () => {
           Исполнитель
         </Cell>
       </Section>
-      <TabsList>
-        <TabsList.Item
-          onClick={() => setTabActive("offers")}
-          selected={tabActive == "offers"}
-        >
-          Объявления
-        </TabsList.Item>
-        <TabsList.Item
-          onClick={() => setTabActive("orders")}
-          selected={tabActive == "orders"}
-        >
-          Работы
-        </TabsList.Item>
-        <TabsList.Item
-          onClick={() => setTabActive("reviews")}
-          selected={tabActive == "reviews"}
-        >
-          Отзывы
-        </TabsList.Item>
-      </TabsList>
+      <div className={styles.tabsWrapper}>
+        <TabsList className={styles.tabs}>
+          <TabsList.Item
+            onClick={() => setTabActive("offers")}
+            selected={tabActive == "offers"}
+            className={styles.tab}
+          >
+            Объявления
+          </TabsList.Item>
+          <TabsList.Item
+            onClick={() => setTabActive("orders")}
+            selected={tabActive == "orders"}
+            className={styles.tab}
+          >
+            Работы
+          </TabsList.Item>
+          <TabsList.Item
+            onClick={() => setTabActive("reviews")}
+            selected={tabActive == "reviews"}
+            className={styles.tab}
+          >
+            Отзывы
+          </TabsList.Item>
+        </TabsList>
+      </div>
       {tabActive == "offers" && <OffersListWidget />}
       {tabActive == "orders" && <OrdersListWidget />}
       {tabActive == "reviews" && <ReviewsListWidget />}
