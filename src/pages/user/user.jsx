@@ -12,11 +12,14 @@ import {
   Placeholder,
   TabsList,
   Headline,
+  Section,
+  Cell,
 } from "@telegram-apps/telegram-ui";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./user.module.css";
 import { cx } from "class-variance-authority";
+import { dayjs } from "@/utils/dates";
 
 export const UserPage = () => {
   const initDataRaw = useLaunchParams().initDataRaw;
@@ -56,26 +59,6 @@ export const UserPage = () => {
             <Button size="m" before={<Icon name="messages" size={18} />}>
               Написать
             </Button>
-            <div className={styles.ratings}>
-              <div className={styles.ratingWrapper}>
-                <Headline weight={3}>Заказчик</Headline>
-                <div className={cx(styles.rating, styles.accent)}>
-                  <Icon name="star" size={16} />
-                  <Caption level={1} weight={2}>
-                    4.0
-                  </Caption>
-                </div>
-              </div>
-              <div className={styles.ratingWrapper}>
-                <Headline weight={3}>Исполнитель</Headline>
-                <div className={cx(styles.rating, styles.hint)}>
-                  <Icon name="star" size={16} />
-                  <Caption level={1} weight={2}>
-                    4.0
-                  </Caption>
-                </div>
-              </div>
-            </div>
           </>
         }
         description={<>{"@" + initData?.initData?.user?.username}</>}
@@ -100,6 +83,35 @@ export const UserPage = () => {
           </IconButton>
         </div>
       </Placeholder>
+      <Section header="Информация">
+        <Cell subtitle={dayjs().format("d MMM YYYY")}>Зарегистрирован</Cell>
+        <Cell
+          subtitle="20 заказов"
+          after={
+            <div className={styles.rating}>
+              <Icon name="star" size={16} />
+              <Caption level={1} weight={2}>
+                4.0
+              </Caption>
+            </div>
+          }
+        >
+          Заказчик
+        </Cell>
+        <Cell
+          subtitle="25 работ"
+          after={
+            <div className={styles.rating}>
+              <Icon name="star" size={16} />
+              <Caption level={1} weight={2}>
+                4.0
+              </Caption>
+            </div>
+          }
+        >
+          Исполнитель
+        </Cell>
+      </Section>
       <TabsList>
         <TabsList.Item
           onClick={() => setTabActive("offers")}

@@ -4,7 +4,10 @@ import {
   Cell,
   Rating,
   Section,
+  Caption,
 } from "@telegram-apps/telegram-ui";
+import { Icon } from "@/components/ui";
+import styles from "./reviews-list.module.css";
 
 const reviews = [
   {
@@ -41,13 +44,12 @@ export const ReviewsListWidget = () => {
           <Section key={review.id}>
             <Cell
               after={
-                <Rating
-                  precision={0.1}
-                  value={review.rating}
-                  onChange={(e) => console.log(e)}
-                  disabled
-                  readOnly
-                />
+                <div className={styles.rating}>
+                  <Icon name="star" size={16} />
+                  <Caption level={1} weight={2}>
+                    4.0
+                  </Caption>
+                </div>
               }
               before={
                 <Avatar

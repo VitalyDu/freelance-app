@@ -18,6 +18,12 @@
   align-items: center;
   grid-column-gap: 4px;
   border-radius: 4px;
+  color: var(--tgui--text_color);
+}
+
+.tag {
+  background: var(--tgui--secondary_fill);
+  color: var(--tgui--link_color);
 }
 
 .info {

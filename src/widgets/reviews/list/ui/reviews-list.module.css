@@ -1,33 +1,8 @@
-.titleBadge,
-.tags {
+.rating {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   grid-column-gap: 6px;
-}
-
-.views,
-.responses,
-.tag {
-  background: var(--tgui--button_color);
-  padding: 2px 6px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  grid-column-gap: 4px;
-  border-radius: 4px;
-}
-
-.status {
-  white-space: nowrap;
-
-  &.inWork {
-    color: var(--tgui--accent_text_color);
-  }
-
-  &.cancelled {
-    color: var(--tgui--destructive_text_color);
-  }
+  color: var(--tgui--link_color);
 }

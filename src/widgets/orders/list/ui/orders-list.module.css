@@ -18,10 +18,12 @@
   align-items: center;
   grid-column-gap: 4px;
   border-radius: 4px;
+  color: var(--tgui--text_color);
 }
 
-.statusWrapper {
-  /* background: var(--tgui--secondary_fill)!important; */
+.tag {
+  background: var(--tgui--secondary_fill);
+  color: var(--tgui--link_color);
 }
 
 .status {

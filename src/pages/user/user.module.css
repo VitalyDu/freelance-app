@@ -4,41 +4,11 @@
   right: 32px;
 }
 
-.ratings {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  grid-column-gap: 24px;
-  border-radius: 6px;
-  padding: 12px;
-  background: var(--tgui--section_bg_color);
-  position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    width: 2px;
-    height: 100%;
-    background: var(--tgui--secondary_fill);
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-  }
-}
-
-.ratingWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
 .rating {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   grid-column-gap: 6px;
+  color: var(--tgui--link_color);
 }

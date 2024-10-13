@@ -34,7 +34,7 @@ export const OffersListWidget = () => {
           <Cell
             key={offer.id}
             subtitle={offer.description}
-            titleBadge={
+            subhead={
               <div className={styles.tags}>
                 <div className={styles.tag}>
                   <Caption level={2} weight={2}>
