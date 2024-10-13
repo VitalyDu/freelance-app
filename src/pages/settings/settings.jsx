@@ -1,12 +1,17 @@
 import { Icon } from "@/components/ui";
+import { useInitData } from "@telegram-apps/sdk-react";
 import {
+  Avatar,
   Button,
   Cell,
-  IconContainer,
+  FileInput,
   Input,
   List,
+  Placeholder,
   Section,
   Selectable,
+  Switch,
+  Textarea,
 } from "@telegram-apps/telegram-ui";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
@@ -14,6 +19,7 @@ import { Link } from "react-router-dom";
 
 export const Settings = () => {
   const { i18n, t } = useTranslation();
+  const initData = useInitData();
 
   const languages = useMemo(() => {
     const array = [
@@ -32,6 +38,17 @@ export const Settings = () => {
           background: "var(--tgui--secondary_bg_color)",
         }}
       >
+        <Placeholder action={<FileInput label={t("settings.change_avatar")} />}>
+          <Avatar
+            size={96}
+            acronym={
+              initData?.initData?.user?.lastName
+                ? initData?.initData?.user?.firstName[0] +
+                  initData?.initData?.user?.lastName[0]
+                : initData?.initData?.user?.firstName[0]
+            }
+          />
+        </Placeholder>
         <Input
           header={t("settings.first_name")}
           placeholder={t("settings.first_name_placeholder")}
@@ -40,13 +57,9 @@ export const Settings = () => {
           header={t("settings.last_name")}
           placeholder={t("settings.last_name_placeholder")}
         />
-        <Input
-          header={t("settings.second_name")}
-          placeholder={t("settings.second_name_placeholder")}
-        />
-        <Input
-          header={t("settings.phone_number")}
-          placeholder={t("settings.phone_number_placeholder")}
+        <Textarea
+          header={t("settings.about_me")}
+          placeholder={t("settings.about_me_placeholder")}
         />
 
         <List
@@ -87,11 +100,24 @@ export const Settings = () => {
           );
         })}
       </Section>
-      {/* <List
+      <Section
+        header={t("settings.privacy_and_security")}
         style={{
-          padding: 10,
+          background: "var(--tgui--secondary_bg_color)",
         }}
-      ></List> */}
+      >
+        <Cell
+          Component="label"
+          after={<Switch defaultChecked />}
+          description={t("settings.telegram_id_description")}
+          multiline
+        >
+          {t("settings.telegram_id")}
+        </Cell>
+        <Cell before={<Icon name="lock-closed" size={24} />}>
+          {t("settings.change_pin")}
+        </Cell>
+      </Section>
 
       <Section
         header={t("settings.additionally")}
@@ -102,24 +128,16 @@ export const Settings = () => {
         <Cell
           Component={"a"}
           href="https://t.me/JediPayApp_bot"
-          before={
-            <IconContainer>
-              <Icon name="messages" size={24} />
-            </IconContainer>
-          }
+          before={<Icon name="chat-bubble" size={24} />}
         >
           {t("settings.support")}
         </Cell>
         <Cell
           Component={Link}
           to="/settings"
-          before={
-            <IconContainer>
-              <Icon name="deal" size={24} />
-            </IconContainer>
-          }
+          before={<Icon name="reader" size={24} />}
         >
-          {t("settings.legal_information")}
+          {t("settings.rules")}
         </Cell>
       </Section>
     </List>
