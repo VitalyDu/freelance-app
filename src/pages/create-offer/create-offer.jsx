@@ -58,8 +58,8 @@ export const CreateOfferPage = () => {
           header={"Описание"}
           placeholder={"Введите описания вашего объявления"}
         />
-        <Cell subhead="Прикрепляйте файлы">
-          <FileInput label="Прикрепить" className={styles.clip} />
+        <Cell>
+          <FileInput label="Прикрепить файлы" className={styles.clip} />
         </Cell>
         <Input
           header={"Цена"}
