@@ -1,5 +1,11 @@
 import { Icon } from "@/components/ui";
-import { Caption, Cell, Section } from "@telegram-apps/telegram-ui";
+import {
+  Caption,
+  Cell,
+  Section,
+  IconButton,
+  Headline,
+} from "@telegram-apps/telegram-ui";
 import styles from "./offers-list.module.css";
 
 const offers = [
@@ -26,9 +32,20 @@ const offers = [
   },
 ];
 
-export const OffersListWidget = () => {
+export const OffersListWidget = ({ label }) => {
   return (
-    <Section>
+    <Section
+      header={
+        label && (
+          <div className={styles.header}>
+            <Headline>{label}</Headline>
+            <IconButton mode="bezeled" size="m">
+              <Icon name="mixer-horizontal" size={24} />
+            </IconButton>
+          </div>
+        )
+      }
+    >
       {offers.map((offer) => {
         return (
           <Cell

@@ -64,7 +64,7 @@ export const MainPage = () => {
       >
         <Cell
           Component={Link}
-          to="/my-cards"
+          to="/my-offers"
           before={<Icon name="reader" size={24} />}
           subtitle={"Управляйте своими объявлениями"}
           after={
