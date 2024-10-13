@@ -3,9 +3,10 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: calc(100% - 24px);
+  margin: 0 auto;
   grid-column-gap: 12px;
-  padding: 6px;
+  padding: 12px 0px;
 }
 
 .titleBadge,

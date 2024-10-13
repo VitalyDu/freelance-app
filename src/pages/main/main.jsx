@@ -75,7 +75,11 @@ export const MainPage = () => {
         >
           Мои объявления
         </Cell>
-        <ButtonCell before={<Icon name="plus" size={24} />}>
+        <ButtonCell
+          Component={Link}
+          to={`/create-offer`}
+          before={<Icon name="plus" size={24} />}
+        >
           Создать новое
         </ButtonCell>
       </Section>
