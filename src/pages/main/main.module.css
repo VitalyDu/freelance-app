@@ -1,0 +1,64 @@
+@keyframes beat {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  75% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.promoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding-top: 24px;
+}
+
+.promo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  animation: beat 3s infinite;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: var(--tgui--button_color);
+  background: color-mix(
+    in oklab,
+    var(--tgui--button_color),
+    var(--tgui--bg_color) 70%
+  );
+  color: var(--tgui--button_text_color);
+  transform: translateX(-25%);
+}
+
+.rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  grid-column-gap: 6px;
+  color: var(--tgui--accent_text_color);
+}

@@ -1,0 +1,59 @@
+.emptyImage {
+  max-width: 180px;
+}
+
+.modalTitle {
+  font-size: var(--tgui--title2--font_size);
+  line-height: var(--tgui--title2--line_height);
+  font-weight: var(--tgui--font_weight--accent3);
+  font-family: var(--tgui--font-family);
+  margin: 0;
+}
+
+.modalDescription {
+  font-size: var(--tgui--text--font_size);
+  line-height: var(--tgui--text--line_height);
+  font-weight: var(--tgui--font_weight--accent3);
+  font-family: var(--tgui--font-family);
+}
+
+.modalActions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-row-gap: 12px;
+  width: 100%;
+}
+
+.cardNumber {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  grid-column-gap: 6px;
+}
+
+.cardNumberValue {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  grid-column-gap: 4px;
+}
+
+.cardBottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  grid-column-gap: 24px;
+}
+
+.cardBottomItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  grid-column-gap: 6px;
+}

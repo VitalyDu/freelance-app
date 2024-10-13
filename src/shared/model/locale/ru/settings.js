@@ -1,0 +1,17 @@
+export const settingsLocaleRu = {
+  personal_data: "Личные данные",
+  first_name: "Имя",
+  first_name_placeholder: "Введите своё имя",
+  last_name: "Фамилия",
+  last_name_placeholder: "Введите свою фамилию",
+  second_name: "Отчество",
+  second_name_placeholder: "Введите своё отчество",
+  phone_number: "Телефон",
+  phone_number_placeholder: "Введите номер телефона",
+  save_label: "Сохранить",
+  select_language: "Выберите язык",
+  language: "Язык",
+  additionally: "Дополнительно",
+  legal_information: "Юридическая информация",
+  support: "Обратиться в поддержку",
+};

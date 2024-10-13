@@ -1,0 +1,17 @@
+export const settingsLocaleEn = {
+  personal_data: "Personal Data",
+  first_name: "First name",
+  first_name_placeholder: "Enter your first name",
+  last_name: "Last name",
+  last_name_placeholder: "Enter your last name",
+  second_name: "Second name",
+  second_name_placeholder: "Enter your second name",
+  phone_number: "Phone",
+  phone_number_placeholder: "Enter your phone number",
+  save_label: "Save",
+  select_language: "Select language",
+  language: "Language",
+  additionally: "Additionally",
+  legal_information: "Legal information",
+  support: "Support",
+};
