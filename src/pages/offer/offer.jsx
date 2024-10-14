@@ -135,8 +135,9 @@ export const OfferPage = () => {
       <Section header="Отклики">
         {responses.map((response) => {
           return (
-            <Section key={response.id}>
+            <>
               <Cell
+                key={response.id}
                 Component={Link}
                 to={`/user/${response.author?.username}`}
                 after={
@@ -168,7 +169,7 @@ export const OfferPage = () => {
               >
                 <Blockquote type="text">{response.comment}</Blockquote>
               </Cell>
-            </Section>
+            </>
           );
         })}
       </Section>
