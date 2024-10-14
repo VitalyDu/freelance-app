@@ -62,3 +62,8 @@
   grid-column-gap: 6px;
   color: var(--tgui--accent_text_color);
 }
+
+.addOfferButton {
+  max-width: 100%;
+  width: auto !important;
+}

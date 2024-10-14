@@ -64,8 +64,16 @@ export const MainPage = () => {
       >
         <Cell
           Component={Link}
+          to="/offers"
+          before={<Icon name="magnifying-glass" size={24} />}
+          subtitle={"Откликайтесь и зарабатывайте"}
+        >
+          Найти объявление
+        </Cell>
+        <Cell
+          Component={Link}
           to="/my-offers"
-          before={<Icon name="reader" size={24} />}
+          before={<Icon name="rocket" size={24} />}
           subtitle={"Управляйте своими объявлениями"}
           after={
             <Badge type="number" mode="primary">
@@ -79,6 +87,7 @@ export const MainPage = () => {
           Component={Link}
           to={`/create-offer`}
           before={<Icon name="plus" size={24} />}
+          className={styles.addOfferButton}
         >
           Создать новое
         </ButtonCell>
