@@ -42,7 +42,7 @@
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
-  grid-row-gap: 6px;
+  grid-row-gap: 10px;
 }
 
 .price {

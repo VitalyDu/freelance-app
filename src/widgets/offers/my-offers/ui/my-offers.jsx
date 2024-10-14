@@ -31,7 +31,7 @@ const offers = [
     description: "Сделать дизайн маркетплейса игровых ценностей в Figma",
     category: "Веб-разработка",
     subcategory: "design",
-    state: "inWork",
+    state: "in_work",
     price: 95,
     currency: "ton",
     views: 871,
@@ -86,22 +86,23 @@ export const MyOffersWidget = ({ label }) => {
             key={offer.id}
             subtitle={offer.description}
             subhead={
-              <div className={styles.tags}>
-                <div className={styles.tag}>
-                  <Caption level={2} weight={2}>
-                    {offer.category}
-                  </Caption>
+              <>
+                <div className={styles.tags}>
+                  <div className={styles.tag}>
+                    <Caption level={2} weight={2}>
+                      {offer.category}
+                    </Caption>
+                  </div>
+                  <div className={styles.tag}>
+                    <Caption level={2} weight={2}>
+                      {offer.subcategory}
+                    </Caption>
+                  </div>
                 </div>
-                <div className={styles.tag}>
-                  <Caption level={2} weight={2}>
-                    {offer.subcategory}
-                  </Caption>
-                </div>
-              </div>
+              </>
             }
             after={
               <div className={styles.info}>
-                <OfferState state={offer.state} />
                 <div className={styles.price}>
                   <Caption level={1} weight={2}>
                     {offer.price}
@@ -116,12 +117,13 @@ export const MyOffersWidget = ({ label }) => {
                     </Caption>
                   </div>
                   <div className={styles.responses}>
-                    <Icon name="eye-open" size={12} />
+                    <Icon name="envelope-closed" size={12} />
                     <Caption level={2} weight={2}>
                       {offer.responses}
                     </Caption>
                   </div>
                 </div>
+                <OfferState state={offer.state} />
               </div>
             }
             description={dayjs(offer.created_date).format("DD MMM YYYY")}
