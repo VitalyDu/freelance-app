@@ -7,6 +7,7 @@ import { Transfer } from "@/pages/transfer/transfer";
 import { UserPage } from "@/pages/user/user";
 import { MyOffersPage } from "@/pages/my-offers/my-offers";
 import { CreateOfferPage } from "@/pages/create-offer/create-offer";
+import { OffersPage } from "@/pages/offers/offers";
 
 export const routes = [
   { path: "/", Component: MainPage },
@@ -24,6 +25,11 @@ export const routes = [
     path: "create-offer",
     Component: CreateOfferPage,
     title: "Создать объявление",
+  },
+  {
+    path: "offers",
+    Component: OffersPage,
+    title: "Объявления",
   },
   { path: "my-cards", Component: MyCards, title: "Мои карты" },
   {
