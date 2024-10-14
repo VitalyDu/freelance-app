@@ -1,9 +1,14 @@
 .state {
   padding: 2px 6px;
   border-radius: 4px;
+  color: var(--tgui--link_color);
+  background: color-mix(
+    in oklab,
+    var(--tgui--link_color),
+    var(--tgui--section_bg_color) 90%
+  );
 
-  &.inWork {
-    /* background: var(--tgui--secondary_fill); */
+  &.in_work {
     color: var(--tgui--link_color);
     background: color-mix(
       in oklab,
