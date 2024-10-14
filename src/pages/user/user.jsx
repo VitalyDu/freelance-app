@@ -18,39 +18,15 @@ import {
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./user.module.css";
+import { Link } from "react-router-dom";
 
 export const UserPage = () => {
-  const initDataRaw = useLaunchParams().initDataRaw;
   const initData = useInitData();
   const { t } = useTranslation();
   const [tabActive, setTabActive] = useState("offers");
 
   return (
     <List>
-      {/* <Section>
-        <Cell
-          before={
-            <Avatar
-              size={48}
-              acronym={
-                initData?.initData?.user?.lastName
-                  ? initData?.initData?.user?.firstName[0] +
-                    initData?.initData?.user?.lastName[0]
-                  : initData?.initData?.user?.firstName[0]
-              }
-            />
-          }
-          subtitle={"@" + initData?.initData?.user?.username}
-          description={
-            <Button size="s" before={<Icon name="messages" size={18} />}>
-              Написать
-            </Button>
-          }
-        >
-          {initData?.initData?.user?.firstName}{" "}
-          {initData?.initData?.user?.lastName}
-        </Cell>
-      </Section> */}
       <Placeholder
         action={
           <>
@@ -76,15 +52,15 @@ export const UserPage = () => {
           }
         />
         <div className={styles.settingsButton}>
-          <IconButton mode="bezeled" size="s">
-            <Icon name="settings" size={18} />
+          <IconButton Component={Link} to={`/settings`} mode="bezeled" size="s">
+            <Icon name="gear" size={18} />
           </IconButton>
         </div>
       </Placeholder>
       <Section header="Информация">
         <Cell subtitle={dayjs().format("d MMM YYYY")}>Зарегистрирован</Cell>
         <Cell
-          subtitle="20 заказов"
+          subtitle="20 созданных объявлений"
           after={
             <div className={styles.rating}>
               <Icon name="star" size={16} />
@@ -94,10 +70,10 @@ export const UserPage = () => {
             </div>
           }
         >
-          Заказчик
+          Партнёр
         </Cell>
         <Cell
-          subtitle="25 работ"
+          subtitle="25 выполненных работ"
           after={
             <div className={styles.rating}>
               <Icon name="star" size={16} />
@@ -107,7 +83,7 @@ export const UserPage = () => {
             </div>
           }
         >
-          Исполнитель
+          Фрилансер
         </Cell>
       </Section>
       <div className={styles.tabsWrapper}>
