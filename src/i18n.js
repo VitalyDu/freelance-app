@@ -4,11 +4,13 @@ import {
   settingsLocaleRu,
   myCardsLocaleRu,
   mainLocaleRu,
+  statusesLocaleRu,
 } from "@/shared/model/locale/ru/index";
 import {
   settingsLocaleEn,
   myCardsLocaleEn,
   mainLocaleEn,
+  statusesLocaleEn,
 } from "@/shared/model/locale/en/index";
 
 i18n
@@ -20,6 +22,7 @@ i18n
           main: { ...mainLocaleEn },
           settings: { ...settingsLocaleEn },
           my_cards: { ...myCardsLocaleEn },
+          statuses: { ...statusesLocaleEn },
         },
       },
       ru: {
@@ -27,6 +30,7 @@ i18n
           main: { ...mainLocaleRu },
           settings: { ...settingsLocaleRu },
           my_cards: { ...myCardsLocaleRu },
+          statuses: { ...statusesLocaleRu },
         },
       },
     },
