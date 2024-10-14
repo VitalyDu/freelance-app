@@ -7,7 +7,7 @@ import {
   IconButton,
   Section,
   Input,
-  IconContainer,
+  Pagination,
 } from "@telegram-apps/telegram-ui";
 import styles from "./offers-list.module.css";
 
@@ -127,6 +127,7 @@ export const OffersListWidget = ({ label }) => {
           </Cell>
         );
       })}
+      <Pagination boundaryCount={1} count={10} siblingCount={1} />
     </Section>
   );
 };
