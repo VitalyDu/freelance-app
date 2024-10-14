@@ -70,9 +70,9 @@ export const CreateOfferPage = () => {
           Component="label"
           before={
             <Selectable
-              checked={selectedCurrency == "usdt"}
+              checked={selectedCurrency == "ton"}
               name="currency"
-              value={"usdt"}
+              value={"ton"}
               onChange={(e) => {
                 setSelectedCurrency(e.target.value);
               }}
@@ -88,17 +88,18 @@ export const CreateOfferPage = () => {
           placeholder={"Введите цену объявления"}
           after={<Icon name={selectedCurrency} size={24} />}
         />
-      </Section>
-      <Section>
-        <List
-          style={{
-            padding: "20px 22px 16px",
-          }}
+        <Select
+          header="Способ оплаты"
+          placeholder="Выберите способ оплаты работы"
         >
-          <Button mode="bezeled" size="m" stretched>
-            Создать
-          </Button>
-        </List>
+          <option>Любой</option>
+          <option>Постоплата</option>
+          <option>Предоплата</option>
+          <option>Поэтапная</option>
+        </Select>
+        <Button mode="bezeled" size="l" stretched>
+          Создать
+        </Button>
       </Section>
     </List>
   );
