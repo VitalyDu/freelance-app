@@ -45,10 +45,15 @@
   grid-row-gap: 6px;
 }
 
+.title {
+  color: var(--tgui--text_color);
+}
+
 .price {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   grid-column-gap: 6px;
+  color: var(--tgui--text_color);
 }

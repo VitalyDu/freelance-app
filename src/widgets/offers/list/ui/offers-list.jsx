@@ -5,11 +5,12 @@ import {
   Cell,
   Headline,
   IconButton,
-  Section,
   Input,
   Pagination,
+  Section,
 } from "@telegram-apps/telegram-ui";
 import styles from "./offers-list.module.css";
+import { Link } from "react-router-dom";
 
 const offers = [
   {
@@ -65,69 +66,75 @@ const offers = [
 
 export const OffersListWidget = ({ label }) => {
   return (
-    <Section
-      header={
-        <div className={styles.header}>
-          <Input
-            before={<Icon name="magnifying-glass" size={24} />}
-            placeholder={"Поиск..."}
-          />
-          <IconButton mode="bezeled" size="m">
-            <Icon name="mixer-horizontal" size={24} />
-          </IconButton>
-        </div>
-      }
-    >
-      {offers.map((offer) => {
-        return (
-          <Cell
-            key={offer.id}
-            subtitle={offer.description}
-            subhead={
-              <div className={styles.tags}>
-                <div className={styles.tag}>
-                  <Caption level={2} weight={2}>
-                    {offer.category}
-                  </Caption>
-                </div>
-                <div className={styles.tag}>
-                  <Caption level={2} weight={2}>
-                    {offer.subcategory}
-                  </Caption>
-                </div>
-              </div>
-            }
-            after={
-              <div className={styles.info}>
-                <div className={styles.price}>
-                  <Caption level={1} weight={2}>
-                    {offer.price}
-                  </Caption>
-                  <Icon name={offer.currency} size={18} />
-                </div>
-                <div className={styles.titleBadge}>
-                  <div className={styles.views}>
-                    <Icon name="eye-open" size={12} />
+    <>
+      <Section
+        header={
+          <div className={styles.header}>
+            <Input
+              before={<Icon name="magnifying-glass" size={24} />}
+              placeholder={"Поиск..."}
+            />
+            <IconButton mode="bezeled" size="m">
+              <Icon name="mixer-horizontal" size={24} />
+            </IconButton>
+          </div>
+        }
+      >
+        {offers.map((offer) => {
+          return (
+            <Cell
+              Component={Link}
+              to={`/offer/${offer.id}`}
+              key={offer.id}
+              subtitle={offer.description}
+              subhead={
+                <div className={styles.tags}>
+                  <div className={styles.tag}>
                     <Caption level={2} weight={2}>
-                      {offer.views}
+                      {offer.category}
                     </Caption>
                   </div>
-                  <div className={styles.responses}>
-                    <Icon name="envelope-closed" size={12} />
+                  <div className={styles.tag}>
                     <Caption level={2} weight={2}>
-                      {offer.responses}
+                      {offer.subcategory}
                     </Caption>
                   </div>
                 </div>
-              </div>
-            }
-            description={dayjs(offer.created_date).format("DD MMM YYYY")}
-          >
-            {offer.title}
-          </Cell>
-        );
-      })}
-      <Pagination boundaryCount={1} count={10} siblingCount={1} />
-    </Section>
+              }
+              after={
+                <div className={styles.info}>
+                  <div className={styles.price}>
+                    <Caption level={1} weight={2}>
+                      {offer.price}
+                    </Caption>
+                    <Icon name={offer.currency} size={18} />
+                  </div>
+                  <div className={styles.titleBadge}>
+                    <div className={styles.views}>
+                      <Icon name="eye-open" size={12} />
+                      <Caption level={2} weight={2}>
+                        {offer.views}
+                      </Caption>
+                    </div>
+                    <div className={styles.responses}>
+                      <Icon name="envelope-closed" size={12} />
+                      <Caption level={2} weight={2}>
+                        {offer.responses}
+                      </Caption>
+                    </div>
+                  </div>
+                </div>
+              }
+              description={dayjs(offer.created_date).format("DD MMM YYYY")}
+            >
+              <Headline level={2} weight={2} className={styles.title}>
+                {offer.title}
+              </Headline>
+            </Cell>
+          );
+        })}
+      </Section>
+      <Pagination boundaryCount={1} count={10} siblingCount={0} />
+    </>
   );
 };
