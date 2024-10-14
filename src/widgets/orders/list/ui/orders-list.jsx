@@ -1,6 +1,7 @@
-import { Caption, Cell, Chip, Section } from "@telegram-apps/telegram-ui";
-import { cx } from "class-variance-authority";
+import { OfferState } from "@/entities/offer/state";
+import { Caption, Cell, Section } from "@telegram-apps/telegram-ui";
 import styles from "./orders-list.module.css";
+import { dayjs } from "@/utils/dates";
 
 const orders = [
   {
@@ -10,7 +11,8 @@ const orders = [
       "Написать админку для сервиса, на react. Использовать стейт-менеджер mobx. Необходимо для защиты использовать bff. Методология FSD. Ссылка на фигму - ",
     category: "Веб-разработка",
     subcategory: "frontend",
-    status: "inWork",
+    status: "in_work",
+    created_date: "2024-10-13T18:59:40.503220Z",
   },
   {
     id: 1,
@@ -19,6 +21,7 @@ const orders = [
     category: "Веб-разработка",
     subcategory: "design",
     status: "complete",
+    created_date: "2024-10-13T18:59:40.503220Z",
   },
   {
     id: 1,
@@ -27,14 +30,9 @@ const orders = [
     category: "Веб-разработка",
     subcategory: "design",
     status: "cancelled",
+    created_date: "2024-10-13T18:59:40.503220Z",
   },
 ];
-
-const statuses = {
-  inWork: "В работе",
-  complete: "Выполнено",
-  cancelled: "Отменено",
-};
 
 export const OrdersListWidget = () => {
   return (
@@ -58,20 +56,8 @@ export const OrdersListWidget = () => {
                 </div>
               </div>
             }
-            after={
-              <Chip className={styles.statusWrapper}>
-                <Caption
-                  className={cx(styles.status, {
-                    [styles.inWork]: order.status == "inWork",
-                    [styles.cancelled]: order.status == "cancelled",
-                    [styles.complete]: order.status == "complete",
-                  })}
-                  weight={1}
-                >
-                  {statuses[order.status]}
-                </Caption>
-              </Chip>
-            }
+            after={<OfferState state={order.status} />}
+            description={dayjs(order.created_date).format("DD MMM YYYY")}
           >
             {order.title}
           </Cell>

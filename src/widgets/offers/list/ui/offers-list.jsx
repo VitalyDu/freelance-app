@@ -1,14 +1,15 @@
 import { Icon } from "@/components/ui";
+import { dayjs } from "@/utils/dates";
 import {
   Caption,
   Cell,
-  Section,
-  IconButton,
   Headline,
+  IconButton,
+  Section,
+  Input,
+  IconContainer,
 } from "@telegram-apps/telegram-ui";
 import styles from "./offers-list.module.css";
-import { OfferState } from "@/entities/offer/state";
-import { dayjs } from "@/utils/dates";
 
 const offers = [
   {
@@ -66,14 +67,15 @@ export const OffersListWidget = ({ label }) => {
   return (
     <Section
       header={
-        label && (
-          <div className={styles.header}>
-            <Headline>{label}</Headline>
-            <IconButton mode="bezeled" size="m">
-              <Icon name="mixer-horizontal" size={24} />
-            </IconButton>
-          </div>
-        )
+        <div className={styles.header}>
+          <Input
+            before={<Icon name="magnifying-glass" size={24} />}
+            placeholder={"Поиск..."}
+          />
+          <IconButton mode="bezeled" size="m">
+            <Icon name="mixer-horizontal" size={24} />
+          </IconButton>
+        </div>
       }
     >
       {offers.map((offer) => {
@@ -111,7 +113,7 @@ export const OffersListWidget = ({ label }) => {
                     </Caption>
                   </div>
                   <div className={styles.responses}>
-                    <Icon name="eye-open" size={12} />
+                    <Icon name="envelope-closed" size={12} />
                     <Caption level={2} weight={2}>
                       {offer.responses}
                     </Caption>
