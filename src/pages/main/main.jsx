@@ -20,6 +20,9 @@ export const MainPage = () => {
   const initData = useInitData();
   const { t } = useTranslation();
 
+  console.log(initDataRaw);
+  console.log(initData);
+
   return (
     <List>
       <div className={styles.promoWrapper}>
