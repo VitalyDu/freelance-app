@@ -24,7 +24,7 @@ export class AuthStore {
       //  this.abortController = new AbortController();
       this.loading = true;
       const res = await authApi.auth({
-        initDataRow,
+        data: { request_str: initDataRow },
       });
       if (res.status === 200 && res.data) {
         runInAction(() => {
