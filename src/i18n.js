@@ -5,12 +5,14 @@ import {
   myCardsLocaleRu,
   mainLocaleRu,
   statusesLocaleRu,
+  createOfferRu,
 } from "@/shared/model/locale/ru/index";
 import {
   settingsLocaleEn,
   myCardsLocaleEn,
   mainLocaleEn,
   statusesLocaleEn,
+  createOfferEn,
 } from "@/shared/model/locale/en/index";
 
 i18n
@@ -23,6 +25,7 @@ i18n
           settings: { ...settingsLocaleEn },
           my_cards: { ...myCardsLocaleEn },
           statuses: { ...statusesLocaleEn },
+          create_offer: { ...createOfferEn },
         },
       },
       ru: {
@@ -31,6 +34,7 @@ i18n
           settings: { ...settingsLocaleRu },
           my_cards: { ...myCardsLocaleRu },
           statuses: { ...statusesLocaleRu },
+          create_offer: { ...createOfferRu },
         },
       },
     },

@@ -1,0 +1,18 @@
+export const createOfferRu = {
+  detailed_information: "Детальная информация",
+  category: "Категория",
+  select_category: "Выберите категорию",
+  division: "Раздел",
+  select_division: "Выберите раздел",
+  title: "Название",
+  enter_title: "Введите название объявления",
+  description: "Описание",
+  enter_description: "Введите описание объявления",
+  clip_files: "Прикрепить файлы",
+  currency_and_amount: "Валюта и цена",
+  amount: "Цена",
+  enter_amount: "Введите цену объявления",
+  payment_type: "Способ оплаты",
+  select_payment_type: "Выберите способ оплаты",
+  create: "Создать",
+};

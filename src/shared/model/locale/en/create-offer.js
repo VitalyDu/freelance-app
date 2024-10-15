@@ -1,0 +1,18 @@
+export const createOfferEn = {
+  detailed_information: "Detailed information",
+  category: "Category",
+  select_category: "Select category",
+  division: "Division",
+  select_division: "Select division",
+  title: "Title",
+  enter_title: "Enter offer title",
+  description: "Description",
+  enter_description: "Enter offer description",
+  clip_files: "Clip file",
+  currency_and_amount: "Currency and price",
+  amount: "Price",
+  enter_amount: "Enter offer price",
+  payment_type: "Payment type",
+  select_payment_type: "Select payment type",
+  create: "Create",
+};
