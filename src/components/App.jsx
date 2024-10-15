@@ -11,20 +11,23 @@ import {
   useInitData,
 } from "@telegram-apps/sdk-react";
 import { AppRoot, Tabbar, PinInput } from "@telegram-apps/telegram-ui";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Navigate, Route, Router, Routes } from "react-router-dom";
 import { routes } from "@/navigation/routes";
 import { useTranslation } from "react-i18next";
 import { dayjs } from "@/utils/dates";
 import { Icon } from "@/components/ui";
+import { AuthStore } from "@/entities/auth";
 
 export const App = () => {
   const lp = useLaunchParams();
   const miniApp = useMiniApp();
   const themeParams = useThemeParams();
   const viewport = useViewport();
+  const initDataRaw = useLaunchParams().initDataRaw;
   const initData = useInitData();
   const { i18n } = useTranslation();
+  const { 0: store } = useState(() => new AuthStore());
 
   useEffect(() => {
     return bindMiniAppCSSVars(miniApp, themeParams);
@@ -62,6 +65,10 @@ export const App = () => {
         : "en"
     );
   }, [initData?.initData?.user?.languageCode]);
+
+  useEffect(() => {
+    if (initDataRaw) store.getUser(initDataRaw);
+  }, [initDataRaw]);
 
   return (
     <AppRoot
