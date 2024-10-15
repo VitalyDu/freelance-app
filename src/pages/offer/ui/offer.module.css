@@ -1,3 +1,20 @@
+.header {
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  grid-column-gap: 12px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  grid-column-gap: 8px;
+}
+
 .titleBadge,
 .tags {
   display: flex;
@@ -42,4 +59,20 @@
   align-items: center;
   grid-column-gap: 6px;
   color: var(--tgui--link_color);
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  grid-column-gap: 6px;
+  color: var(--tgui--text_color);
+}
+
+.state {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
