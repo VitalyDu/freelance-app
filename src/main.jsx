@@ -1,4 +1,4 @@
-import { Root } from "@/components/Root";
+import { Root } from "@/app/Root";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import "./mockEnv.js";
