@@ -11,7 +11,7 @@ export const AuthGuard = observer(() => {
   const initDataRaw = useLaunchParams().initDataRaw;
   const authStore = useStore(AuthStoreContext);
   const location = useLocation();
-  const [cookies, setCookie] = useCookies(["name"]);
+  const [cookies, setCookie] = useCookies(["access_token"]);
 
   useEffect(() => {
     if (initDataRaw && !authStore.data?.id) {
