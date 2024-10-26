@@ -19,7 +19,7 @@ export const appRouter = () =>
           Component: lazy(() => import("@/pages/main")),
         },
         {
-          path: "/auth",
+          path: "/signin",
           element: <SignIn />,
         },
         {
