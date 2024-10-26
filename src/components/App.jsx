@@ -35,6 +35,8 @@ export const App = observer(() => {
   const [pinRepeat, setPinRepeat] = useState("");
   const [step, setStep] = useState(1);
 
+  console.log(initData);
+
   useEffect(() => {
     return bindMiniAppCSSVars(miniApp, themeParams);
   }, [miniApp, themeParams]);
