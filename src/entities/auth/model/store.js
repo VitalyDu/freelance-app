@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { authApi } from "@/entities/auth";
+import axios from "axios";
 
 export class AuthStore {
   loading = true;
@@ -45,6 +46,11 @@ export class AuthStore {
       if (res.status === 200 && res.data) {
         runInAction(() => {
           this.accessToken = res.data?.access_token;
+          if (res.data?.access_token) {
+            axios.defaults.headers.common[
+              "Authorization"
+            ] = `Bearer ${res.data?.access_token}`;
+          }
           this.registered = true;
           this.loading = false;
         });
@@ -62,6 +68,11 @@ export class AuthStore {
       if (res.status === 200 && res.data) {
         runInAction(() => {
           this.accessToken = res.data?.access_token;
+          if (res.data?.access_token) {
+            axios.defaults.headers.common[
+              "Authorization"
+            ] = `Bearer ${res.data?.access_token}`;
+          }
           this.loading = false;
         });
       }
