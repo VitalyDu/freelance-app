@@ -1,4 +1,4 @@
-import { MainPage } from "@/pages/main/main";
+import { MainPage } from "@/pages/main";
 import { MyCards } from "@/pages/my-cards/my-cards";
 import { Transactions } from "@/pages/transactions/transactions";
 import { TransactionsDetail } from "@/pages/transactions-detail/transactions-detail";
