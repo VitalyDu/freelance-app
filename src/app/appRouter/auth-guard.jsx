@@ -21,7 +21,7 @@ export const AuthGuard = observer(() => {
 
   useEffect(() => {
     if (authStore.accessToken) {
-      setCookie("access_token", authStore.accessToken);
+      sessionStorage.setItem("access_token", authStore.accessToken);
     }
   }, [authStore.accessToken]);
 

@@ -1,13 +1,15 @@
 import axios from "axios";
 
+const getAccessToken = () => {
+  return sessionStorage.getItem("access_token");
+};
+
 function createBaseApi() {
   let currentReq = null;
 
   async function getCurrentAccessToken() {
     if (typeof document === "undefined") return "";
-    let token = document.cookie
-      .split(";")
-      .filter((cookie) => cookie.trim().startsWith("access_token"))[0];
+    let token = getAccessToken();
 
     if (typeof token === "undefined") return 0;
     // eslint-disable-next-line no-unused-vars
