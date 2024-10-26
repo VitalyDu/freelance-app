@@ -1,5 +1,5 @@
 import { Icon } from "@/components/ui";
-import { useInitData, useLaunchParams } from "@telegram-apps/sdk-react";
+import { useInitData } from "@telegram-apps/sdk-react";
 import {
   Avatar,
   Badge,
@@ -16,12 +16,8 @@ import { Link } from "react-router-dom";
 import styles from "./main.module.css";
 
 export const MainPage = () => {
-  const initDataRaw = useLaunchParams().initDataRaw;
   const initData = useInitData();
   const { t } = useTranslation();
-
-  console.log(initDataRaw);
-  console.log(initData);
 
   return (
     <List>
