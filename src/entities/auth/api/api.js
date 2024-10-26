@@ -1,9 +1,17 @@
-import { post } from "@/shared/api/baseApi";
+// import { post } from "@/shared/api/baseApi";
+
+// export const authApi = {
+//   checkTelegram: ({ data }) => {
+//     post({ url: `/check_telegram`, data: data });
+//   },
+//   signUp: ({ data }) => {
+//     post({ url: `/register`, data: data });
+//   },
+// };
+
+import { baseApi } from "@/shared/api";
 
 export const authApi = {
-  auth: ({ data }) => {
-    // console.log(initDataRow);
-    // baseApi.post({ url: `/check_telegram`, data: initDataRow });
-    post({ url: `/check_telegram`, data: data });
-  },
+  checkTelegram: ({ data }) => baseApi.post("/check_telegram", data),
+  signUp: (pin, data) => baseApi.post(`/register?pin_code=${pin}`, data),
 };

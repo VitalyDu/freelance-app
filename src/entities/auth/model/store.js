@@ -1,44 +1,53 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import { authApi } from "@/entities/auth";
 
 export class AuthStore {
-  initial = true;
   loading = true;
   abortController = null;
   data = {};
+  accessToken = "";
+  registered = undefined; // Поле для хранения токена
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
   }
 
   clear = () => {
-    this.initial = true;
     this.loading = true;
     this.abortController = null;
     this.data = {};
+    this.accessToken = ""; // Очистка токена
   };
 
-  getUser = async (initDataRow) => {
+  checkTelegram = async (initDataRow) => {
     try {
-      //  if (this.abortController) this.abortController.abort();
-      //  this.abortController = new AbortController();
       this.loading = true;
-      const res = await authApi.auth({
+      const res = await authApi.checkTelegram({
         data: { request_str: initDataRow },
       });
       if (res.status === 200 && res.data) {
         runInAction(() => {
-          this.data = res.data;
-          this.initial = false;
+          this.registered = res.data?.registered;
           this.loading = false;
         });
       }
     } catch (error) {
       console.log(error);
-    } finally {
-      //  runInAction(() => {
-      //    this.abortController = null;
-      //  });
+    }
+  };
+
+  signUp = async (pin, initDataRow) => {
+    try {
+      this.loading = true;
+      const res = await authApi.signUp(pin, { request_str: initDataRow });
+      if (res.status === 200 && res.data) {
+        runInAction(() => {
+          // this.registered = res.data?.registered;
+          this.loading = false;
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 }
