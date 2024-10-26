@@ -1,25 +1,28 @@
+import { AuthStoreContext } from "@/entities/auth";
+import { routes } from "@/navigation/routes";
+import { useStore } from "@/shared/model";
+import { dayjs } from "@/utils/dates";
 import { useIntegration } from "@telegram-apps/react-router-integration";
 import {
   bindMiniAppCSSVars,
   bindThemeParamsCSSVars,
   bindViewportCSSVars,
   initNavigator,
+  useInitData,
   useLaunchParams,
   useMiniApp,
   useThemeParams,
   useViewport,
-  useInitData,
 } from "@telegram-apps/sdk-react";
-import { AppRoot, Tabbar, PinInput } from "@telegram-apps/telegram-ui";
+import { AppRoot, Spinner } from "@telegram-apps/telegram-ui";
 import { useEffect, useMemo, useState } from "react";
-import { Navigate, Route, Router, Routes } from "react-router-dom";
-import { routes } from "@/navigation/routes";
 import { useTranslation } from "react-i18next";
-import { dayjs } from "@/utils/dates";
-import { Icon } from "@/components/ui";
-import { AuthStore } from "@/entities/auth";
+import { Navigate, Route, Router, Routes } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { SingUpPinWidget } from "@/widgets/pin/signup";
+import { observer } from "mobx-react-lite";
 
-export const App = () => {
+export const App = observer(() => {
   const lp = useLaunchParams();
   const miniApp = useMiniApp();
   const themeParams = useThemeParams();
@@ -27,7 +30,10 @@ export const App = () => {
   const initDataRaw = useLaunchParams().initDataRaw;
   const initData = useInitData();
   const { i18n } = useTranslation();
-  const { 0: store } = useState(() => new AuthStore());
+  const authStore = useStore(AuthStoreContext);
+  const [pin, setPin] = useState("");
+  const [pinRepeat, setPinRepeat] = useState("");
+  const [step, setStep] = useState(1);
 
   useEffect(() => {
     return bindMiniAppCSSVars(miniApp, themeParams);
@@ -67,23 +73,78 @@ export const App = () => {
   }, [initData?.initData?.user?.languageCode]);
 
   useEffect(() => {
-    if (initDataRaw) store.getUser(initDataRaw);
+    if (initDataRaw && !authStore.data?.id) {
+      authStore.checkTelegram(initDataRaw);
+    }
   }, [initDataRaw]);
 
+  const handleForm = () => {
+    if (pin.every((value, index) => value !== pinRepeat[index])) {
+      toast.error("Вы неверно повторили пин");
+      setPin("");
+      setPinRepeat("");
+      setStep(1);
+      return;
+    }
+
+    const data = {
+      request_str: initDataRaw,
+      pin_code: pin,
+    };
+    authStore.signUp(pin, initDataRaw);
+  };
+
+  useEffect(() => {
+    if (pin.length === 4) {
+      setStep(2);
+    }
+  }, [pin]);
+
+  useEffect(() => {
+    if (pinRepeat.length === 4) {
+      handleForm();
+    }
+  }, [pinRepeat]);
+
   return (
-    <AppRoot
-      appearance={miniApp.isDark ? "dark" : "light"}
-      platform={["macos", "ios"].includes(lp.platform) ? "ios" : "base"}
-    >
-      {/* <PinInput /> */}
-      <Router location={location} navigator={reactNavigator}>
-        <Routes>
-          {routes.map((route) => (
-            <Route key={route.path} {...route} />
-          ))}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </Router>
+    <AppRoot appearance={"dark"} platform={"ios"}>
+      {authStore.loading && <Spinner />}
+      {authStore.registered === false && step == 1 && (
+        <SingUpPinWidget
+          value={pin}
+          onChange={(e) => setPin(e)}
+          label="Придумайте пароль"
+        />
+      )}
+      {authStore.registered === false && step == 2 && (
+        <SingUpPinWidget
+          value={pinRepeat}
+          onChange={(e) => setPinRepeat(e)}
+          label="Повторите пароль"
+        />
+      )}
+      {authStore.data?.id && (
+        <Router location={location} navigator={reactNavigator}>
+          <Routes>
+            {routes.map((route) => (
+              <Route key={route.path} {...route} />
+            ))}
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </Router>
+      )}
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </AppRoot>
   );
-};
+});
